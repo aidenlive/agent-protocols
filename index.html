@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Agent Protocols — a registry for coding agents</title>
+  <meta name="description" content="A branded, agent-reachable protocol registry. Both human-readable and machine-readable. Designed to be referenced by coding agents at a stable URL." />
+
+  <!-- Discovery -->
+  <link rel="alternate" type="application/json" title="Agent Protocols Manifest" href="./manifest.json" />
+  <link rel="alternate" type="application/json" title="AI Protocols Discovery" href="./.well-known/ai-protocols.json" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Agent Protocols" />
+  <meta property="og:description" content="A branded, agent-reachable protocol registry for coding agents." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://aidenlive.github.io/agent-protocols" />
+
+  <!-- Theme color (matches CSS) -->
+  <meta name="theme-color" content="#0c0d0a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/bold/style.css" />
+
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Floating nav -->
+  <header class="nav" role="banner">
+    <a class="nav__brand" href="./" aria-label="Agent Protocols home">
+      <span class="nav__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+          <path d="M3 12 L9 6 L9 18 Z" />
+          <path d="M15 6 L21 12 L15 18 Z" />
+          <line x1="11" y1="3" x2="13" y2="21" />
+        </svg>
+      </span>
+      <span class="nav__wordmark"><span class="nav__slash">/</span>agent-protocols</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#protocols">Protocols</a>
+      <a href="#how">How it works</a>
+      <a href="#agents">For agents</a>
+    </nav>
+
+    <div class="nav__controls">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+        <i class="ph ph-sun" aria-hidden="true"></i>
+        <i class="ph ph-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__grid">
+
+        <div class="hero__eyebrow">
+          <span class="tag tag--accent">
+            <span class="tag__dot" aria-hidden="true"></span>
+            spec ap-2026-05 · live
+          </span>
+        </div>
+
+        <h1 id="hero-title" class="hero__title">
+          <span class="hero__line">Protocols</span>
+          <span class="hero__line"><em>for</em> agents,</span>
+          <span class="hero__line">at a URL.</span>
+        </h1>
+
+        <p class="hero__lede">
+          A branded, agent-reachable registry. Every protocol resolves to a markdown file at a predictable address — equally readable to humans browsing the site and to coding agents fetching the raw source.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#protocols">
+            Browse protocols
+            <i class="ph-bold ph-arrow-down-right" aria-hidden="true"></i>
+          </a>
+          <a class="btn btn--ghost" href="./AGENTS.md">
+            <i class="ph ph-file-code" aria-hidden="true"></i>
+            AGENTS.md
+          </a>
+        </div>
+
+        <div class="hero__terminal" aria-label="Example agent invocation">
+          <div class="terminal">
+            <div class="terminal__head">
+              <span class="terminal__dot"></span>
+              <span class="terminal__dot"></span>
+              <span class="terminal__dot"></span>
+              <span class="terminal__title">claude · session</span>
+            </div>
+            <pre class="terminal__body"><span class="t-prompt">user </span><span class="t-input">release init from main</span>
+<span class="t-comment"># agent resolves trigger phrase</span>
+<span class="t-fetch">GET</span> <span class="t-url">aidenlive.github.io/agent-protocols/release/init.md</span>
+<span class="t-ok">200</span> <span class="t-meta">text/markdown · 2.4 KB · cache 300s</span>
+
+<span class="t-prompt">claude </span><span class="t-output">protocol loaded. operating as release architect.</span>
+<span class="t-prompt">       </span><span class="t-output">→ branch: main @ 4f3a1c2</span>
+<span class="t-prompt">       </span><span class="t-output">→ archived 3 stale planning docs</span>
+<span class="t-prompt">       </span><span class="t-output">→ created /RELEASE-STATUS.md</span>
+<span class="t-prompt">       </span><span class="t-output">→ next: release audit</span></pre>
+          </div>
+        </div>
+
+        <aside class="hero__meta" aria-label="Site stats">
+          <dl>
+            <div><dt>Protocols</dt><dd>1</dd></div>
+            <div><dt>Commands</dt><dd>7</dd></div>
+            <div><dt>Templates</dt><dd>11</dd></div>
+            <div><dt>License</dt><dd>MIT</dd></div>
+          </dl>
+        </aside>
+
+      </div>
+
+      <div class="hero__rail" aria-hidden="true">
+        <span class="hero__rail-text">
+          aidenlive.github.io/agent-protocols · aidenlive.github.io/agent-protocols · aidenlive.github.io/agent-protocols ·
+        </span>
+      </div>
+    </section>
+
+    <!-- Protocols -->
+    <section class="protocols" id="protocols" aria-labelledby="protocols-title">
+      <div class="section__head">
+        <span class="section__index">01</span>
+        <h2 id="protocols-title" class="section__title">Available protocols</h2>
+        <p class="section__lede">Each protocol exposes commands, a canonical spec, and reusable output templates. Fetch any of them directly.</p>
+      </div>
+
+      <article class="protocol-card" data-anim>
+        <header class="protocol-card__head">
+          <span class="protocol-card__tag">release · v1.0.0</span>
+          <h3 class="protocol-card__title">Release Protocol</h3>
+          <p class="protocol-card__lede">Audit, harden, and ship in-progress repositories to public-release readiness. Five phases, seven commands, eleven deliverables.</p>
+        </header>
+
+        <div class="protocol-card__commands" role="list">
+          <a class="cmd" role="listitem" href="./release/init.md">
+            <span class="cmd__phase">00</span>
+            <code class="cmd__name">release init</code>
+            <span class="cmd__desc">Detect existing state, archive stale docs, seed RELEASE-STATUS.md.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" role="listitem" href="./release/audit.md">
+            <span class="cmd__phase">01</span>
+            <code class="cmd__name">release audit</code>
+            <span class="cmd__desc">Phase 1. Audit every surface; classify findings; cite evidence.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" role="listitem" href="./release/report.md">
+            <span class="cmd__phase">02</span>
+            <code class="cmd__name">release report <em>{version}</em></code>
+            <span class="cmd__desc">Phase 2. Consolidate audit into RELEASE-{version}-REPORT.md with Go/No-Go.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" role="listitem" href="./release/cleanup.md">
+            <span class="cmd__phase">03</span>
+            <code class="cmd__name">release cleanup</code>
+            <span class="cmd__desc">Phase 3. Remove dead code; standardize naming, config, tooling, CI.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" role="listitem" href="./release/prep.md">
+            <span class="cmd__phase">04</span>
+            <code class="cmd__name">release prep</code>
+            <span class="cmd__desc">Phase 4. Generate deliverables; verify CI, secrets, rollback, observability.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" role="listitem" href="./release/gtm.md">
+            <span class="cmd__phase">05</span>
+            <code class="cmd__name">release gtm</code>
+            <span class="cmd__desc">Phase 5. Build launch checklist; assign owners; rehearse rollback.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" role="listitem" href="./release/sync.md">
+            <span class="cmd__phase">∞</span>
+            <code class="cmd__name">release sync</code>
+            <span class="cmd__desc">Reconcile RELEASE-STATUS.md with reality. Run any time.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <footer class="protocol-card__foot">
+          <a class="chip" href="./release/manifest.json">
+            <i class="ph ph-brackets-curly" aria-hidden="true"></i>
+            manifest.json
+          </a>
+          <a class="chip" href="./release/protocol.xml">
+            <i class="ph ph-code" aria-hidden="true"></i>
+            protocol.xml
+          </a>
+          <a class="chip" href="./release/templates/">
+            <i class="ph ph-folder-simple" aria-hidden="true"></i>
+            templates
+          </a>
+        </footer>
+      </article>
+
+      <article class="protocol-card protocol-card--placeholder" aria-label="Add your own">
+        <div class="protocol-card__placeholder">
+          <i class="ph ph-plus-circle" aria-hidden="true"></i>
+          <h3>Your protocol here</h3>
+          <p>Fork the repo, scaffold under <code>/protocols/{your-protocol}/</code>, register in the root manifest.</p>
+          <a class="btn btn--ghost btn--sm" href="./docs/adding-protocols.md">
+            How to add a protocol
+            <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- How it works -->
+    <section class="how" id="how" aria-labelledby="how-title">
+      <div class="section__head">
+        <span class="section__index">02</span>
+        <h2 id="how-title" class="section__title">How resolution works</h2>
+        <p class="section__lede">Trigger phrase → command URL → procedure. One fetch, deterministic mapping.</p>
+      </div>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num">i</span>
+          <h3 class="step__title">User issues a phrase</h3>
+          <p class="step__text">A short, memorable command — <code>release init</code>, <code>release audit</code>, <code>release report 1.0.0</code>.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">ii</span>
+          <h3 class="step__title">Agent reads the manifest</h3>
+          <p class="step__text">It fetches <code>/manifest.json</code> and matches the phrase against <code>trigger_phrases</code>.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">iii</span>
+          <h3 class="step__title">Agent fetches the command</h3>
+          <p class="step__text">The resolved URL is a markdown file with frontmatter, required steps, rules, and an output contract.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">iv</span>
+          <h3 class="step__title">Agent executes the procedure</h3>
+          <p class="step__text">Maintains the state file the protocol declares. Persists progress across sessions.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- For agents -->
+    <section class="agents" id="agents" aria-labelledby="agents-title">
+      <div class="agents__grid">
+        <div class="agents__copy">
+          <span class="section__index">03</span>
+          <h2 id="agents-title" class="section__title">For agents</h2>
+          <p class="section__lede">Three endpoints. That's the contract.</p>
+
+          <ul class="endpoints">
+            <li>
+              <code>GET /.well-known/ai-protocols.json</code>
+              <span>Minimal pointer for autodiscovery.</span>
+            </li>
+            <li>
+              <code>GET /manifest.json</code>
+              <span>Full list of protocols, trigger phrases, and command URLs.</span>
+            </li>
+            <li>
+              <code>GET /{protocol}/{command}.md</code>
+              <span>The procedure itself. Treat as authoritative.</span>
+            </li>
+          </ul>
+
+          <a class="btn btn--primary" href="./docs/for-agents.md">
+            Read the resolution contract
+            <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <pre class="agents__code"><code><span class="c-key">$</span> <span class="c-cmd">curl</span> https://aidenlive.github.io/agent-protocols/manifest.json
+<span class="c-out">{
+  <span class="c-str">"name"</span>: <span class="c-str">"Agent Protocols"</span>,
+  <span class="c-str">"version"</span>: <span class="c-str">"1.0.0"</span>,
+  <span class="c-str">"spec_version"</span>: <span class="c-str">"ap-2026-05"</span>,
+  <span class="c-str">"protocols"</span>: [
+    {
+      <span class="c-str">"id"</span>: <span class="c-str">"release"</span>,
+      <span class="c-str">"entry"</span>: <span class="c-str">".../release/init.md"</span>,
+      <span class="c-str">"trigger_phrases"</span>: [
+        <span class="c-str">"release init"</span>,
+        <span class="c-str">"release audit"</span>,
+        <span class="c-str">"release report"</span>,
+        <span class="c-str">"release cleanup"</span>,
+        <span class="c-str">"release prep"</span>,
+        <span class="c-str">"release gtm"</span>,
+        <span class="c-str">"release sync"</span>
+      ]
+    }
+  ]
+}</span></code></pre>
+      </div>
+    </section>
+
+    <!-- Principles -->
+    <section class="principles" aria-labelledby="principles-title">
+      <div class="section__head">
+        <span class="section__index">04</span>
+        <h2 id="principles-title" class="section__title">Principles</h2>
+      </div>
+
+      <ul class="principle-list">
+        <li><span>i.</span><p><strong>Truth over assumption.</strong> Evidence beats narrative.</p></li>
+        <li><span>ii.</span><p><strong>Document reality, not intention.</strong> If it isn't true today, it doesn't go in the doc.</p></li>
+        <li><span>iii.</span><p><strong>Simplicity over fragility.</strong> Cleverness costs interest forever.</p></li>
+        <li><span>iv.</span><p><strong>Consistency over entropy.</strong> A small system rigorously applied beats a big one applied unevenly.</p></li>
+        <li><span>v.</span><p><strong>Never assume functionality without verification.</strong> Verified means reproduced, not believed.</p></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="footer__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+            <path d="M3 12 L9 6 L9 18 Z" />
+            <path d="M15 6 L21 12 L15 18 Z" />
+            <line x1="11" y1="3" x2="13" y2="21" />
+          </svg>
+        </span>
+        <p>Agent Protocols<br /><span>Open source · MIT</span></p>
+      </div>
+
+      <nav class="footer__cols" aria-label="Footer">
+        <div>
+          <h4>Registry</h4>
+          <a href="./manifest.json">manifest.json</a>
+          <a href="./.well-known/ai-protocols.json">.well-known/ai-protocols.json</a>
+          <a href="./AGENTS.md">AGENTS.md</a>
+        </div>
+        <div>
+          <h4>Protocols</h4>
+          <a href="./release/">Release</a>
+          <a href="./docs/adding-protocols.md">Add your own</a>
+        </div>
+        <div>
+          <h4>Docs</h4>
+          <a href="./docs/getting-started.md">Getting started</a>
+          <a href="./docs/for-agents.md">For agents</a>
+          <a href="./docs/for-humans.md">For humans</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 Agent Protocols</span>
+      <span>spec ap-2026-05</span>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js" defer></script>
+</body>
+</html>

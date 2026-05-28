@@ -1,0 +1,2 @@
+# All protocol files are served directly from the file system.
+# Add custom redirects here only if you want clean URLs (e.g. /release/init -> /release/init.md).
