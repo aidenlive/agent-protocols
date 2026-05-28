@@ -1,0 +1,42 @@
+{
+  "$schema": "https://aidenlive.github.io/agent-protocols/.well-known/protocol-manifest.schema.json",
+  "name": "Agent Protocols",
+  "version": "1.0.0",
+  "description": "Branded, agent-reachable protocol registry. Each protocol exposes both human-readable HTML and machine-readable markdown/XML at predictable URLs.",
+  "base_url": "https://aidenlive.github.io/agent-protocols",
+  "spec_version": "ap-2026-05",
+  "contact": {
+    "url": "https://aidenlive.github.io/agent-protocols",
+    "issues": "https://github.com/aidenlive/agent-protocols/issues"
+  },
+  "conventions": {
+    "agent_entry": "/AGENTS.md",
+    "human_entry": "/index.html",
+    "discovery": "/.well-known/ai-protocols.json",
+    "command_resolution": "{base_url}/{protocol}/{command}.md",
+    "protocol_index": "{base_url}/{protocol}/manifest.json",
+    "templates": "{base_url}/{protocol}/templates/"
+  },
+  "protocols": [
+    {
+      "id": "release",
+      "name": "Release Protocol",
+      "version": "1.0.0",
+      "summary": "Audit, harden, and ship in-progress repositories to public-release readiness.",
+      "url": "https://aidenlive.github.io/agent-protocols/release",
+      "manifest": "https://aidenlive.github.io/agent-protocols/release/manifest.json",
+      "entry": "https://aidenlive.github.io/agent-protocols/release/init.md",
+      "source": "https://aidenlive.github.io/agent-protocols/release/protocol.xml",
+      "tags": ["release", "audit", "devops", "qa", "launch"],
+      "trigger_phrases": [
+        "release init",
+        "release audit",
+        "release report",
+        "release cleanup",
+        "release prep",
+        "release gtm",
+        "release sync"
+      ]
+    }
+  ]
+}

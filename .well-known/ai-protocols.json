@@ -1,0 +1,13 @@
+{
+  "name": "Agent Protocols",
+  "publisher": "aidenlive.github.io",
+  "manifest": "https://aidenlive.github.io/agent-protocols/manifest.json",
+  "agents_md": "https://aidenlive.github.io/agent-protocols/AGENTS.md",
+  "human_index": "https://aidenlive.github.io/agent-protocols/",
+  "spec": "ap-2026-05",
+  "description": "Index of branded operational protocols for autonomous coding agents.",
+  "endpoints": {
+    "protocols": "https://aidenlive.github.io/agent-protocols/manifest.json",
+    "release": "https://aidenlive.github.io/agent-protocols/release/manifest.json"
+  }
+}

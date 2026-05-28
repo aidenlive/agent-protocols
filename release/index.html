@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Release Protocol — Agent Protocols</title>
+  <meta name="description" content="Audit, harden, and ship in-progress repositories to public-release readiness. Five phases, seven commands, eleven deliverables." />
+
+  <link rel="alternate" type="application/xml" title="Canonical spec" href="./protocol.xml" />
+  <link rel="alternate" type="application/json" title="Protocol manifest" href="./manifest.json" />
+
+  <meta name="theme-color" content="#0c0d0a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f4f3ee" media="(prefers-color-scheme: light)" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/regular/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web/src/bold/style.css" />
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+  <header class="nav" role="banner">
+    <a class="nav__brand" href="../" aria-label="Agent Protocols home">
+      <span class="nav__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+          <path d="M3 12 L9 6 L9 18 Z" />
+          <path d="M15 6 L21 12 L15 18 Z" />
+          <line x1="11" y1="3" x2="13" y2="21" />
+        </svg>
+      </span>
+      <span class="nav__wordmark"><span class="nav__slash">/</span>agent-protocols</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="../#protocols">All protocols</a>
+      <a href="../docs/for-agents.md">For agents</a>
+      <a href="../docs/for-humans.md">For humans</a>
+    </nav>
+
+    <div class="nav__controls">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+        <i class="ph ph-sun" aria-hidden="true"></i>
+        <i class="ph ph-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__grid">
+
+        <div class="hero__eyebrow">
+          <a href="../" class="tag" style="cursor: pointer;">
+            <i class="ph ph-arrow-left" aria-hidden="true" style="font-size: 12px;"></i>
+            All protocols
+          </a>
+          <span class="tag tag--accent" style="margin-left: 8px;">
+            <span class="tag__dot" aria-hidden="true"></span>
+            release · v1.0.0
+          </span>
+        </div>
+
+        <h1 class="hero__title" style="font-size: clamp(3rem, 9vw, 6.5rem);">
+          <span class="hero__line">Release</span>
+          <span class="hero__line"><em>Protocol.</em></span>
+        </h1>
+
+        <p class="hero__lede">
+          You are a technical reviewer, release architect, and repository standardization agent. Your job is to take in-progress projects to public-release readiness — by auditing reality versus assumption, surfacing risk, and producing reviewable artifacts.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="./init.md">
+            Start with <code style="font-family: inherit; font-weight: 600; margin-left: 4px;">release init</code>
+            <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="btn btn--ghost" href="./protocol.xml">
+            <i class="ph ph-code" aria-hidden="true"></i>
+            View canonical spec
+          </a>
+        </div>
+
+        <aside class="hero__meta">
+          <dl>
+            <div><dt>Phases</dt><dd>5</dd></div>
+            <div><dt>Commands</dt><dd>7</dd></div>
+            <div><dt>Deliverables</dt><dd>11</dd></div>
+            <div><dt>State file</dt><dd style="font-family: var(--font-mono); font-size: var(--fs-1);">/RELEASE-STATUS.md</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Commands -->
+    <section class="protocols" aria-label="Commands">
+      <div class="section__head">
+        <span class="section__index">01</span>
+        <h2 class="section__title">Commands</h2>
+        <p class="section__lede">Every command is a markdown file at a stable URL. Fetch it; treat it as authoritative.</p>
+      </div>
+
+      <article class="protocol-card">
+        <div class="protocol-card__commands">
+          <a class="cmd" href="./init.md">
+            <span class="cmd__phase">00</span>
+            <code class="cmd__name">release init</code>
+            <span class="cmd__desc">Initialize against the target branch. Archive stale planning docs. Seed RELEASE-STATUS.md.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./audit.md">
+            <span class="cmd__phase">01</span>
+            <code class="cmd__name">release audit</code>
+            <span class="cmd__desc">Audit product, architecture, infra, APIs, deployment, security, docs, ops, DX. Cite evidence.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./report.md">
+            <span class="cmd__phase">02</span>
+            <code class="cmd__name">release report <em>{version}</em></code>
+            <span class="cmd__desc">Consolidate audit into RELEASE-{version}-REPORT.md with a Go/No-Go verdict.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./cleanup.md">
+            <span class="cmd__phase">03</span>
+            <code class="cmd__name">release cleanup</code>
+            <span class="cmd__desc">Remove dead code. Standardize naming, config, tooling, CI. Tests must stay green.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./prep.md">
+            <span class="cmd__phase">04</span>
+            <code class="cmd__name">release prep</code>
+            <span class="cmd__desc">Generate deliverables; verify CI, secrets, rollback, observability with evidence.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./gtm.md">
+            <span class="cmd__phase">05</span>
+            <code class="cmd__name">release gtm</code>
+            <span class="cmd__desc">Build the launch checklist. Assign owners. Rehearse rollback. Plan first 72 hours.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./sync.md">
+            <span class="cmd__phase">∞</span>
+            <code class="cmd__name">release sync</code>
+            <span class="cmd__desc">Reconcile state with reality. Run at any time, especially after team work or post-launch.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Deliverables -->
+    <section class="how" aria-label="Deliverables">
+      <div class="section__head">
+        <span class="section__index">02</span>
+        <h2 class="section__title">Deliverables</h2>
+        <p class="section__lede">Output templates. Each is a real, reviewable document — not a stub.</p>
+      </div>
+
+      <article class="protocol-card">
+        <div class="protocol-card__commands">
+          <a class="cmd" href="./templates/RELEASE-STATUS.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">RELEASE-STATUS.md</code>
+            <span class="cmd__desc">Canonical operational state file. Updated on every meaningful change.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/RELEASE-REPORT.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">RELEASE-{version}-REPORT.md</code>
+            <span class="cmd__desc">Formal release report with verdict, evidence, and remediation roadmap.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/RELEASE-CHECKLIST.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">RELEASE-CHECKLIST.md</code>
+            <span class="cmd__desc">Pass/fail items. Tick when verified by evidence, not by guess.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/LAUNCH-PLAN.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">LAUNCH-PLAN.md</code>
+            <span class="cmd__desc">T-7 to T+72h plan. Owners are people, not teams.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/DEPLOYMENT.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">DEPLOYMENT.md</code>
+            <span class="cmd__desc">How this project is built, configured, and shipped to production.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/SECURITY.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">SECURITY.md</code>
+            <span class="cmd__desc">Disclosure path, supported versions, posture, data handling, compliance.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/CONTRIBUTING.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">CONTRIBUTING.md</code>
+            <span class="cmd__desc">Setup, branches, commits, PRs, releases. Accurate by Phase 4.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/CHANGELOG.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">CHANGELOG.md</code>
+            <span class="cmd__desc">Keep a Changelog format. SemVer. Comparison links pre-wired.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/ROADMAP.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">ROADMAP.md</code>
+            <span class="cmd__desc">Now / Next / Later / Considered / Not doing. With a review date.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/INCIDENT-RESPONSE.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">INCIDENT-RESPONSE.md</code>
+            <span class="cmd__desc">Severities, on-call, response flow, blameless postmortem template.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+          <a class="cmd" href="./templates/SUPPORT.md">
+            <span class="cmd__phase">↳</span>
+            <code class="cmd__name">SUPPORT.md</code>
+            <span class="cmd__desc">Channels, SLAs, what's supported, what isn't. Public-facing.</span>
+            <i class="cmd__arrow ph ph-arrow-up-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Principles -->
+    <section class="principles" aria-label="Principles">
+      <div class="section__head">
+        <span class="section__index">03</span>
+        <h2 class="section__title">Principles</h2>
+        <p class="section__lede">The non-negotiables of this protocol. If a finding violates one, the finding is wrong.</p>
+      </div>
+
+      <ul class="principle-list">
+        <li><span>i.</span><p><strong>Truth over assumption.</strong></p></li>
+        <li><span>ii.</span><p><strong>Evidence over optimism.</strong></p></li>
+        <li><span>iii.</span><p><strong>Simplicity over fragility.</strong></p></li>
+        <li><span>iv.</span><p><strong>Consistency over entropy.</strong></p></li>
+        <li><span>v.</span><p><strong>Clarity over cleverness.</strong></p></li>
+        <li><span>vi.</span><p><strong>Document reality, not intention.</strong></p></li>
+        <li><span>vii.</span><p><strong>Never assume functionality without verification.</strong></p></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="footer__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square">
+            <path d="M3 12 L9 6 L9 18 Z" />
+            <path d="M15 6 L21 12 L15 18 Z" />
+            <line x1="11" y1="3" x2="13" y2="21" />
+          </svg>
+        </span>
+        <p>Release Protocol<br /><span>v1.0.0 · spec ap-2026-05</span></p>
+      </div>
+
+      <nav class="footer__cols" aria-label="Footer">
+        <div>
+          <h4>Spec</h4>
+          <a href="./protocol.xml">protocol.xml</a>
+          <a href="./manifest.json">manifest.json</a>
+        </div>
+        <div>
+          <h4>Commands</h4>
+          <a href="./init.md">init</a>
+          <a href="./audit.md">audit</a>
+          <a href="./report.md">report</a>
+          <a href="./cleanup.md">cleanup</a>
+          <a href="./prep.md">prep</a>
+          <a href="./gtm.md">gtm</a>
+          <a href="./sync.md">sync</a>
+        </div>
+        <div>
+          <h4>Back</h4>
+          <a href="../">Registry home</a>
+          <a href="../docs/for-agents.md">For agents</a>
+          <a href="../docs/adding-protocols.md">Add a protocol</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2026 Agent Protocols</span>
+      <span>release · v1.0.0</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

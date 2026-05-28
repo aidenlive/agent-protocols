@@ -1,0 +1,96 @@
+{
+  "$schema": "https://aidenlive.github.io/agent-protocols/.well-known/protocol.schema.json",
+  "id": "release",
+  "name": "Release Protocol",
+  "version": "1.0.0",
+  "summary": "Audit, harden, and ship in-progress repositories to public-release readiness.",
+  "role": "technical reviewer, release architect, and repository standardization agent",
+  "spec": "https://aidenlive.github.io/agent-protocols/release/protocol.xml",
+  "human": "https://aidenlive.github.io/agent-protocols/release/",
+  "state_file": "/RELEASE-STATUS.md",
+  "principles": [
+    "Truth over assumption.",
+    "Evidence over optimism.",
+    "Simplicity over fragility.",
+    "Consistency over entropy.",
+    "Clarity over cleverness.",
+    "Document reality, not intention.",
+    "Never assume functionality without verification."
+  ],
+  "commands": [
+    {
+      "id": "init",
+      "trigger": "release init",
+      "summary": "Initialize the release protocol against the current branch. Detect existing state files, archive stale docs, create RELEASE-STATUS.md.",
+      "url": "https://aidenlive.github.io/agent-protocols/release/init.md",
+      "args": [
+        { "name": "branch", "required": false, "default": "main", "description": "Branch to audit." }
+      ]
+    },
+    {
+      "id": "audit",
+      "trigger": "release audit",
+      "summary": "Phase 1. Audit product, architecture, infrastructure, APIs, deployment, security, docs, ops, DX. Classify findings.",
+      "url": "https://aidenlive.github.io/agent-protocols/release/audit.md"
+    },
+    {
+      "id": "report",
+      "trigger": "release report",
+      "summary": "Phase 2. Generate /RELEASE-{version}-REPORT.md from audit findings.",
+      "url": "https://aidenlive.github.io/agent-protocols/release/report.md",
+      "args": [
+        { "name": "version", "required": true, "description": "Semver string for the report filename, e.g. 1.0.0." }
+      ]
+    },
+    {
+      "id": "cleanup",
+      "trigger": "release cleanup",
+      "summary": "Phase 3. Remove dead code, standardize structure, hygiene the repository.",
+      "url": "https://aidenlive.github.io/agent-protocols/release/cleanup.md"
+    },
+    {
+      "id": "prep",
+      "trigger": "release prep",
+      "summary": "Phase 4. Generate release deliverables. Validate CI/CD, secrets, rollback, observability.",
+      "url": "https://aidenlive.github.io/agent-protocols/release/prep.md"
+    },
+    {
+      "id": "gtm",
+      "trigger": "release gtm",
+      "summary": "Phase 5. Build the launch checklist: QA, prod verification, legal, comms, post-launch monitoring.",
+      "url": "https://aidenlive.github.io/agent-protocols/release/gtm.md"
+    },
+    {
+      "id": "sync",
+      "trigger": "release sync",
+      "summary": "Reconcile RELEASE-STATUS.md with actual repo state. Update phase, progress, blockers.",
+      "url": "https://aidenlive.github.io/agent-protocols/release/sync.md"
+    }
+  ],
+  "deliverables": [
+    "/RELEASE-STATUS.md",
+    "/RELEASE-{version}-REPORT.md",
+    "/RELEASE-CHECKLIST.md",
+    "/LAUNCH-PLAN.md",
+    "/DEPLOYMENT.md",
+    "/SECURITY.md",
+    "/CONTRIBUTING.md",
+    "/CHANGELOG.md",
+    "/ROADMAP.md",
+    "/INCIDENT-RESPONSE.md",
+    "/SUPPORT.md"
+  ],
+  "templates": {
+    "RELEASE-STATUS.md": "https://aidenlive.github.io/agent-protocols/release/templates/RELEASE-STATUS.md",
+    "RELEASE-REPORT.md": "https://aidenlive.github.io/agent-protocols/release/templates/RELEASE-REPORT.md",
+    "RELEASE-CHECKLIST.md": "https://aidenlive.github.io/agent-protocols/release/templates/RELEASE-CHECKLIST.md",
+    "LAUNCH-PLAN.md": "https://aidenlive.github.io/agent-protocols/release/templates/LAUNCH-PLAN.md",
+    "DEPLOYMENT.md": "https://aidenlive.github.io/agent-protocols/release/templates/DEPLOYMENT.md",
+    "SECURITY.md": "https://aidenlive.github.io/agent-protocols/release/templates/SECURITY.md",
+    "CONTRIBUTING.md": "https://aidenlive.github.io/agent-protocols/release/templates/CONTRIBUTING.md",
+    "CHANGELOG.md": "https://aidenlive.github.io/agent-protocols/release/templates/CHANGELOG.md",
+    "ROADMAP.md": "https://aidenlive.github.io/agent-protocols/release/templates/ROADMAP.md",
+    "INCIDENT-RESPONSE.md": "https://aidenlive.github.io/agent-protocols/release/templates/INCIDENT-RESPONSE.md",
+    "SUPPORT.md": "https://aidenlive.github.io/agent-protocols/release/templates/SUPPORT.md"
+  }
+}
